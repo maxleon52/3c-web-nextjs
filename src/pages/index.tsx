@@ -99,12 +99,12 @@ export default function Home() {
       <Footer>
         <section>
           <Link href="https://github.com/maxleon52">
-            <a>
+            <a target="_blank">
               <GrGithub />
             </a>
           </Link>
           <Link href="https://www.linkedin.com/in/maxwell-alves-de-sousa-835036163/">
-            <a>
+            <a target="_blank">
               <GrLinkedinOption />
             </a>
           </Link>

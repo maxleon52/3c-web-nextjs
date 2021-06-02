@@ -1,18 +1,31 @@
-import { ReactNode } from 'react';
+import Link from "next/link";
+import { Container, Content, Separator } from "./styles";
 
-import { Container } from './styles';
-
-interface SignProps {
-  children: ReactNode;
-}
-
-function Sign({ children }: SignProps) {
+function Sign() {
   return (
     <Container>
-      <h1>sign</h1>
-      {children}
+      <Content>
+        <header>
+          <h1>3C</h1>
+          <p>Controle Cartão de Crédito</p>
+        </header>
+
+        <form>
+          <input type="email" />
+          <input type="password" />
+          <button type="button">Entrar</button>
+        </form>
+
+        <Separator>
+          <span>ou</span>
+        </Separator>
+
+        <Link href="/signup">
+          <a>Criar conta</a>
+        </Link>
+      </Content>
     </Container>
   );
-};
+}
 
 export default Sign;
