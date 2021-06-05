@@ -31,11 +31,10 @@ export const Header = styled.header`
       border: 1px solid var(--white-200);
       border-radius: 0.25rem;
       transition: all 0.2s;
+      color: var(--white-000);
+
       :hover {
         filter: brightness(0.8);
-      }
-      a {
-        color: var(--white-000);
       }
     }
   }
@@ -111,14 +110,11 @@ export const BlockContentRight = styled.div`
     transition: all 0.2s;
     width: 100%;
     max-width: 15.5rem;
+    color: var(--white-000);
+    font-size: 1.25rem;
+    font-weight: 700;
     :hover {
       filter: brightness(0.9);
-    }
-
-    a {
-      color: var(--white-000);
-      font-size: 1.25rem;
-      font-weight: 700;
     }
   }
 
@@ -204,13 +200,10 @@ export const BlockContentRight2 = styled.div`
     transition: all 0.2s;
     width: 100%;
     max-width: 15.5rem;
+    color: var(--white-000);
+    font-size: 1.25rem;
     :hover {
       filter: brightness(0.9);
-    }
-
-    a {
-      color: var(--white-000);
-      font-size: 1.25rem;
     }
   }
 
@@ -272,6 +265,8 @@ export const BlockContentRight3 = styled.div`
   margin-top: 80px;
 
   > strong {
+    width: 100%;
+    max-width: 437px;
     height: 10.625rem;
     font-size: 2.6rem;
     text-align: center;
@@ -286,14 +281,11 @@ export const BlockContentRight3 = styled.div`
     transition: all 0.2s;
     width: 100%;
     max-width: 15.5rem;
+    color: var(--white-000);
+    font-size: 1.25rem;
+    font-weight: 700;
     :hover {
       filter: brightness(0.9);
-    }
-
-    a {
-      color: var(--white-000);
-      font-size: 1.25rem;
-      font-weight: 700;
     }
   }
 

@@ -1,4 +1,5 @@
 import Link from "next/link";
+
 import { Container, Content, Separator } from "./styles";
 
 function Sign() {

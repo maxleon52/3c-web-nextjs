@@ -22,10 +22,11 @@ export const Content = styled.div`
   border-radius: 10px;
 
   header {
-    border-bottom: 2px solid;
+    border-bottom: 2px solid var(--blue-900);
     width: 100%;
     max-width: 310px;
     padding: 10px;
+    color: var(--blue-900);
 
     h1 {
       text-align: center;

@@ -1,5 +1,9 @@
-import { GrGithub, GrLinkedinOption } from "react-icons/gr";
+import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
+import { GrGithub, GrLinkedinOption } from "react-icons/gr";
+
+import Modal from "../components/Modal";
+
 import {
   Container,
   Header,
@@ -19,17 +23,34 @@ import {
 } from "../styles/pages/home";
 
 export default function Home() {
+  const [isOpen, setIsOpen] = useState(false);
+
+  function handleOpenModal() {
+    if (isOpen === false) {
+      document.body.style.overflow = "hidden";
+    }
+    setIsOpen(!isOpen);
+  }
+  function onCancel() {
+    if (isOpen === true) {
+      document.body.style.overflow = "unset";
+    }
+    setIsOpen(!isOpen);
+  }
+
+  useEffect(() => {
+    console.log("isOpen: ", isOpen);
+  }, []);
+
   return (
     <Container>
       <Header>
         <div>
           <h1>3C - Controle de Cartão de Crédito</h1>
 
-          <Link href="/sign">
-            <button>
-              <a>Fazer login</a>
-            </button>
-          </Link>
+          <button type="button" onClick={handleOpenModal}>
+            Fazer login
+          </button>
         </div>
       </Header>
 
@@ -46,11 +67,7 @@ export default function Home() {
             <strong>
               Organize as compras do seu cartão de crédito de forma rápida !
             </strong>
-            <Link href="/sign">
-              <button>
-                <a>Eu quero!</a>
-              </button>
-            </Link>
+            <button onClick={handleOpenModal}>Eu quero!</button>
           </BlockContentRight>
         </BlockContent>
       </Block1>
@@ -84,14 +101,9 @@ export default function Home() {
 
           <BlockContentRight3>
             <strong>
-              Chega de perder tempo organizando as compras do seu cartão todo
-              mês.
+              Cadastre a compra, o devedor e pronto! Rápido e fácil
             </strong>
-            <Link href="/sign">
-              <button>
-                <a>Eu quero!</a>
-              </button>
-            </Link>
+            <button onClick={handleOpenModal}>Eu quero!</button>
           </BlockContentRight3>
         </BlockContent3>
       </Block3>
@@ -110,6 +122,8 @@ export default function Home() {
           </Link>
         </section>
       </Footer>
+
+      {isOpen === true && <Modal onCancel={onCancel} />}
     </Container>
   );
 }
