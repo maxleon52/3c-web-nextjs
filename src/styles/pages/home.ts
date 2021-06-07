@@ -340,3 +340,72 @@ export const Footer = styled.footer`
     }
   }
 `;
+
+export const ContentModal = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  row-gap: 20px;
+  width: 475px;
+  height: 475px;
+  padding: 20px;
+  background: var(--white-100);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+
+  > div {
+    border-bottom: 2px solid var(--blue-900);
+    width: 100%;
+    max-width: 310px;
+    padding: 10px;
+    color: var(--blue-900);
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+    }
+    p {
+      text-align: center;
+      font-size: 18px;
+      font-weight: 700;
+    }
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    row-gap: 20px;
+    width: 100%;
+  }
+
+  a {
+    color: var(--grey-300);
+    font-weight: 900;
+  }
+`;
+
+export const Separator = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid var(--grey-300) !important;
+  position: relative;
+  width: 100%;
+  max-width: 238px;
+  padding: 0px !important;
+
+  span {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: var(--grey-300);
+    background: var(--white-100);
+    height: fit-content;
+    padding: 0px 10px;
+    position: absolute;
+    top: -11px;
+  }
+`;

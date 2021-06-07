@@ -1,8 +1,10 @@
 import { useCallback, useEffect, useState } from "react";
 import Link from "next/link";
 import { GrGithub, GrLinkedinOption } from "react-icons/gr";
+import { RiUser3Line, RiLockLine } from "react-icons/ri";
 
 import Modal from "../components/Modal";
+import Input from "../components/Input";
 
 import {
   Container,
@@ -20,6 +22,8 @@ import {
   BlockContentLeft3,
   BlockContentRight3,
   Footer,
+  Separator,
+  ContentModal,
 } from "../styles/pages/home";
 
 export default function Home() {
@@ -123,7 +127,40 @@ export default function Home() {
         </section>
       </Footer>
 
-      {isOpen === true && <Modal onCancel={onCancel} />}
+      {isOpen === true && (
+        <Modal onCancel={onCancel}>
+          <ContentModal>
+            <div>
+              <h1>3C</h1>
+              <p>Controle Cartão de Crédito</p>
+            </div>
+
+            <form>
+              <Input
+                name="email"
+                type="email"
+                placeholder="E-mail"
+                icon={RiUser3Line}
+              />
+              <Input
+                name="password"
+                type="password"
+                placeholder="Senha"
+                icon={RiLockLine}
+              />
+              <button type="button">Entrar</button>
+            </form>
+
+            <Separator>
+              <span>ou</span>
+            </Separator>
+
+            <Link href="/dashboard">
+              <a>Criar conta</a>
+            </Link>
+          </ContentModal>
+        </Modal>
+      )}
     </Container>
   );
 }

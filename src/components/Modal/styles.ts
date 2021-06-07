@@ -1,4 +1,15 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
+
+const FadeInDownAnimation = keyframes`
+  from {
+     opacity: 0;
+     transform: translate3d(0, -100%, 0);
+   }
+   to {
+     opacity: 1;
+     transform: none;
+   }
+`;
 
 export const Overlay = styled.div`
   display: flex;
@@ -28,6 +39,8 @@ export const Container = styled.div`
   border-radius: 8px;
   background: var(--white-100);
   overflow-y: auto;
+  animation-name: ${FadeInDownAnimation};
+  animation-duration: 0.5s;
 
   header {
     border: 2px solid blue;
@@ -71,9 +84,9 @@ export const Container = styled.div`
 export const Content = styled.div`
   border: 2px solid red;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: center;
-  flex-direction: column;
   height: 100%;
   overflow-x: hidden;
 
