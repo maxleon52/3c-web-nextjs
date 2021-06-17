@@ -6,14 +6,15 @@ import { Overlay, Container, Content } from "./styles";
 interface ModalProps {
   children?: ReactNode;
   onCancel: () => void;
+  title?: string;
 }
 
-function Modal({ children, onCancel }: ModalProps) {
+function Modal({ children, onCancel, title }: ModalProps) {
   return (
     <Overlay>
       <Container>
         <header>
-          <h1>Modal</h1>
+          <h1>{title}</h1>
 
           <button type="button" onClick={() => onCancel()}>
             <RiCloseLine />

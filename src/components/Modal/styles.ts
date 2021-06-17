@@ -32,7 +32,7 @@ export const Container = styled.div`
   display: flex;
   flex-direction: column;
   row-gap: 20px;
-  height: 29.688rem;
+  min-height: 29.688rem;
   min-width: 29.688rem;
   max-height: 90%;
   padding: 1rem;
@@ -43,7 +43,7 @@ export const Container = styled.div`
   animation-duration: 0.5s;
 
   header {
-    border: 2px solid blue;
+    /* border: 2px solid blue; */
     display: flex;
     width: 100%;
 
@@ -82,7 +82,7 @@ export const Container = styled.div`
 `;
 
 export const Content = styled.div`
-  border: 2px solid red;
+  /* border: 2px solid red; */
   display: flex;
   flex-direction: column;
   align-items: center;

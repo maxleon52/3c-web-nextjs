@@ -1,33 +1,40 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 interface ContainerProps {
-  isFocused: boolean;
-  isFilled: boolean;
+  isFocused?: boolean;
+  isFilled?: boolean;
+  isError?: boolean;
 }
+
+export const Wrapper = styled.div`
+  display: grid;
+  grid-row-gap: 10px;
+
+  > p {
+    color: var(--red-700);
+  }
+`;
 
 export const Container = styled.div<ContainerProps>`
   display: flex;
   column-gap: 0.75rem;
   border: 1px solid;
-  border-color: ${(props) =>
-    props.isFocused
-      ? "var(--blue-900)"
-      : props.isFilled
-      ? "var(--blue-900)"
-      : "var(--grey-300) !important"};
   background: var(--white-200);
-  color: ${(props) =>
-    props.isFocused
-      ? "var(--blue-900)"
-      : props.isFilled
-      ? "var(--blue-900)"
-      : "var(--grey-300) !important"};
   padding: 1rem;
   border-radius: 4px;
   transition: all 0.2s;
+  border-color: var(--grey-300);
+
+  ${({ isFocused }) =>
+    isFocused === true &&
+    css`
+      border-color: var(--blue-900);
+    `}
 
   svg {
     transition: all 0.2s;
+    color: ${({ isFilled }) =>
+      isFilled === true ? "var(--blue-900)" : "var(--grey-300)"};
   }
 
   input {

@@ -1,10 +1,14 @@
-import { useCallback, useEffect, useState } from "react";
+import React, { useRef, useState } from "react";
 import Link from "next/link";
+import { SubmitHandler, useForm } from "react-hook-form";
+import * as yup from "yup";
+import { yupResolver } from "@hookform/resolvers/yup";
 import { GrGithub, GrLinkedinOption } from "react-icons/gr";
 import { RiUser3Line, RiLockLine } from "react-icons/ri";
 
 import Modal from "../components/Modal";
-import Input from "../components/Input";
+import { Input } from "../components/Input";
+import ButtonText from "../components/ButtonText";
 
 import {
   Container,
@@ -26,7 +30,30 @@ import {
   ContentModal,
 } from "../styles/pages/home";
 
+type SignInFormData = {
+  email: string;
+  password: string;
+};
+
+const signInFormSchema = yup.object().shape({
+  email: yup.string().required("E-mail obrigatório").email("E-mail inválido"),
+  password: yup.string().required("Senha obrigatória"),
+});
+
 export default function Home() {
+  const inputRef = useRef<HTMLInputElement>(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isSubmitting },
+    // setValue, // serve para colocar um valor no INPUT, usado no UPDATE
+    // getValues, // Buscar valores nos INPUT
+    watch, // Monitorar qualquer alteração dentro do INPUT, como se fosse "onChange"
+  } = useForm({
+    resolver: yupResolver(signInFormSchema),
+  });
+
   const [isOpen, setIsOpen] = useState(false);
 
   function handleOpenModal() {
@@ -42,9 +69,11 @@ export default function Home() {
     setIsOpen(!isOpen);
   }
 
-  useEffect(() => {
-    console.log("isOpen: ", isOpen);
-  }, []);
+  const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
+    await new Promise((resolver) => setTimeout(resolver, 2000));
+    console.log(data);
+    console.log(inputRef.current?.value);
+  };
 
   return (
     <Container>
@@ -135,20 +164,30 @@ export default function Home() {
               <p>Controle Cartão de Crédito</p>
             </div>
 
-            <form>
+            <form onSubmit={handleSubmit(handleSignIn)}>
               <Input
+                ref={inputRef}
                 name="email"
                 type="email"
                 placeholder="E-mail"
+                isFilledValue={!!watch("email")}
+                error={errors.email?.message}
                 icon={RiUser3Line}
+                {...register("email", { required: true })}
               />
               <Input
+                ref={inputRef}
                 name="password"
                 type="password"
                 placeholder="Senha"
+                isFilledValue={!!watch("password")}
+                error={errors.password?.message}
                 icon={RiLockLine}
+                {...register("password", { required: true })}
               />
-              <button type="button">Entrar</button>
+              <ButtonText type="submit" loading={isSubmitting}>
+                Entrar
+              </ButtonText>
             </form>
 
             <Separator>

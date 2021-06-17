@@ -345,10 +345,10 @@ export const ContentModal = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   row-gap: 20px;
   width: 475px;
-  height: 475px;
+  /* height: 475px; */
   padding: 20px;
   background: var(--white-100);
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.25);
@@ -383,6 +383,10 @@ export const ContentModal = styled.div`
   a {
     color: var(--grey-300);
     font-weight: 900;
+    transition: all 0.2s;
+    :hover {
+      filter: brightness(0.9);
+    }
   }
 `;
 
