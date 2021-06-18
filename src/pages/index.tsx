@@ -29,6 +29,8 @@ import {
   Separator,
   ContentModal,
 } from "../styles/pages/home";
+import { AuthContext } from "../context/AuthContext";
+import { useContext } from "react";
 
 type SignInFormData = {
   email: string;
@@ -42,6 +44,7 @@ const signInFormSchema = yup.object().shape({
 
 export default function Home() {
   const inputRef = useRef<HTMLInputElement>(null);
+  const { signIn } = useContext(AuthContext);
 
   const {
     register,
@@ -69,10 +72,13 @@ export default function Home() {
     setIsOpen(!isOpen);
   }
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async (data) => {
+  const handleSignIn: SubmitHandler<SignInFormData> = async (data, e) => {
+    e.preventDefault();
+
+    // Simula delay
     await new Promise((resolver) => setTimeout(resolver, 2000));
-    console.log(data);
-    console.log(inputRef.current?.value);
+
+    await signIn(data);
   };
 
   return (
