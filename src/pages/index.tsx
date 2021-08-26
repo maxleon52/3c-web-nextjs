@@ -12,19 +12,13 @@ import ButtonText from "../components/ButtonText";
 
 import {
   Container,
+  Content, 
   Header,
-  Block1,
-  Block2,
+  BlockRight,
+  BlockLeft,
   BlockContent,
   BlockContentLeft,
   BlockContentRight,
-  BlockContent2,
-  BlockContentLeft2,
-  BlockContentRight2,
-  Block3,
-  BlockContent3,
-  BlockContentLeft3,
-  BlockContentRight3,
   Footer,
   Separator,
   ContentModal,
@@ -72,13 +66,16 @@ export default function Home() {
     setIsOpen(!isOpen);
   }
 
-  const handleSignIn: SubmitHandler<SignInFormData> = async (data, e) => {
+  const handleSignIn: SubmitHandler<SignInFormData> = async (
+    { email, password },
+    e,
+  ) => {
     e.preventDefault();
 
     // Simula delay
-    await new Promise((resolver) => setTimeout(resolver, 2000));
+    await new Promise((resolver) => setTimeout(resolver, 750));
 
-    await signIn(data);
+    await signIn({ email, password });
   };
 
   return (
@@ -92,60 +89,76 @@ export default function Home() {
           </button>
         </div>
       </Header>
+      <Content>
+        <BlockRight>
+          <BlockContent>
+            <BlockContentLeft>
+              <img
+                src="/assets/images/revenue-bro.svg"
+                alt="homem sentado na cadeira com laptop"
+              />
+            </BlockContentLeft>
 
-      <Block1>
-        <BlockContent>
-          <BlockContentLeft>
+            <BlockContentRight>
+              <strong>
+                Organize as compras do seu cartão de crédito de forma rápida !
+              </strong>
+              <button onClick={handleOpenModal}>Eu quero!</button>
+            </BlockContentRight>
             <img
-              src="/assets/images/revenue-bro.svg"
-              alt="homem sentado na cadeira com laptop"
+              id="img-buble1"
+              src="/assets/images/buble-right.svg"
+              alt="forma"
             />
-          </BlockContentLeft>
+          </BlockContent>
+        </BlockRight>
 
-          <BlockContentRight>
-            <strong>
-              Organize as compras do seu cartão de crédito de forma rápida !
-            </strong>
-            <button onClick={handleOpenModal}>Eu quero!</button>
-          </BlockContentRight>
-        </BlockContent>
-      </Block1>
+        <BlockLeft>
+          <BlockContent>
+            <BlockContentLeft>
+              <strong>
+                Chega de perder tempo organizando as compras do seu cartão todo
+                mês.
+              </strong>
+            </BlockContentLeft>
 
-      <Block2>
-        <BlockContent2>
-          <BlockContentLeft2>
-            <strong>
-              Chega de perder tempo organizando as compras do seu cartão todo
-              mês.
-            </strong>
-          </BlockContentLeft2>
-
-          <BlockContentRight2>
+            <BlockContentRight>
+              <img
+                src="/assets/images/card.svg"
+                alt="homem sentado na cadeira com laptop"
+              />
+            </BlockContentRight>
             <img
-              src="/assets/images/card.svg"
-              alt="homem sentado na cadeira com laptop"
+              id="img-buble2"
+              src="/assets/images/buble-left.svg"
+              alt="forma"
             />
-          </BlockContentRight2>
-        </BlockContent2>
-      </Block2>
+          </BlockContent>
+        </BlockLeft>
 
-      <Block3>
-        <BlockContent3>
-          <BlockContentLeft3>
+        <BlockRight>
+          <BlockContent>
+            <BlockContentLeft>
+              <img
+                src="/assets/images/price-bro.svg"
+                alt="homem sentado na cadeira com laptop"
+              />
+            </BlockContentLeft>
+
+            <BlockContentRight>
+              <strong>
+                Cadastre a compra, o devedor e pronto! Rápido e fácil
+              </strong>
+              <button onClick={handleOpenModal}>Eu quero!</button>
+            </BlockContentRight>
             <img
-              src="/assets/images/price-bro.svg"
-              alt="homem sentado na cadeira com laptop"
+              id="img-buble3"
+              src="/assets/images/buble-right.svg"
+              alt="forma"
             />
-          </BlockContentLeft3>
-
-          <BlockContentRight3>
-            <strong>
-              Cadastre a compra, o devedor e pronto! Rápido e fácil
-            </strong>
-            <button onClick={handleOpenModal}>Eu quero!</button>
-          </BlockContentRight3>
-        </BlockContent3>
-      </Block3>
+          </BlockContent>
+        </BlockRight>
+      </Content>
 
       <Footer>
         <section>

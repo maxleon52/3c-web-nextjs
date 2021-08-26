@@ -32,8 +32,13 @@ export const GlobalStyles = createGlobalStyle`
   // 16px para Descktop
 
   html {
+    font-size: 1rem;
     // Tablets
-    @media (max-width: 1080px) {
+    @media (min-width: 1080px) {
+      font-size: 100%; // 16px
+    }
+    // Tablets
+    @media (max-width: 768px) {
       font-size: 93.75%; // 15px
     }
     // Mobiles
@@ -50,6 +55,7 @@ export const GlobalStyles = createGlobalStyle`
   body, input, textarea, button {
     font-family: 'Overlock', cursive, sans-serif;
     font-weight: 400;
+    font-size: 1rem;
   }
 
   h1, h2, h3, h4, h5, h6, strong {

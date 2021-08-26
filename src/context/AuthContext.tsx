@@ -1,6 +1,6 @@
 import { useState, createContext, ReactNode } from "react";
 import Router from "next/router";
-import { setCookie, parseCookies } from "nookies";
+import { setCookie, parseCookies, destroyCookie } from "nookies";
 
 import { api } from "../services/api";
 import { useEffect } from "react";
@@ -38,16 +38,21 @@ export function AuthProvider({ children }: AuthProviderProps) {
   const isAuthenticated = !!user;
 
   useEffect(() => {
-    const { "3cAuth.token": isToken } = parseCookies();
+    const { "3cAuth.token": token } = parseCookies();
 
-    if (isToken) {
-      api.get("/user").then((response) => {
-        const user = response.data;
-        setUser(user);
-      });
+    if (token) {
+      api
+        .get("/user")
+        .then((response) => {
+          setUser(response.data);
+          console.log(response);
+        })
+        .catch(() => {
+          destroyCookie(undefined, "3cAuth.token");
+
+          Router.push("/");
+        });
     }
-
-    return;
   }, []);
 
   async function signIn({ email, password }: SignInCredentials) {
@@ -60,7 +65,7 @@ export function AuthProvider({ children }: AuthProviderProps) {
       const { user, token } = response.data;
 
       setCookie(undefined, "3cAuth.token", token, {
-        maxAge: 60 * 60 * 24 * 30, // 30 days
+        maxAge: 60 * 60 * 1, // 1 hour
         path: "/",
       });
 
@@ -70,8 +75,8 @@ export function AuthProvider({ children }: AuthProviderProps) {
 
       Router.push("/dashboard");
     } catch (err) {
-      alert(err.response.data.message);
-      console.log(err.response.data.message);
+      alert(err.response?.data?.message || "Erro de conexão");
+      // console.log(err.response);
     }
   }
 

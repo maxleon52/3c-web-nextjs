@@ -18,6 +18,7 @@ export const Container = styled.button`
   height: 2.5rem;
   color: var(--white-000);
   border-radius: 4px;
+  font-family: 'Overlock', cursive, sans-serif;
   font-size: 1rem;
   transition: all 0.2s;
 

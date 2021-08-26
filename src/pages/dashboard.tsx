@@ -3,7 +3,7 @@
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 import { useContext } from "react";
-import { AuthContext } from "../../context/AuthContext";
+import { AuthContext } from "../context/AuthContext";
 
 function Dashboard() {
   const { user } = useContext(AuthContext);
