@@ -12,7 +12,7 @@ import ButtonText from "../components/ButtonText";
 
 import {
   Container,
-  Content, 
+  Content,
   Header,
   BlockRight,
   BlockLeft,
@@ -89,6 +89,7 @@ export default function Home() {
           </button>
         </div>
       </Header>
+
       <Content>
         <BlockRight>
           <BlockContent>

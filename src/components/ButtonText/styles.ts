@@ -17,6 +17,7 @@ export const Container = styled.button`
   background: var(--blue-900);
   height: 2.5rem;
   color: var(--white-000);
+  border: none;
   border-radius: 4px;
   font-family: 'Overlock', cursive, sans-serif;
   font-size: 1rem;
