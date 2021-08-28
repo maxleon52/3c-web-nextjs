@@ -2,15 +2,15 @@
 
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
-import { useContext } from "react";
-import { AuthContext } from "../context/AuthContext";
+
+import { Container } from "../styles/pages/dashboard";
 
 function Dashboard() {
-  const { user } = useContext(AuthContext);
+
   return (
-    <h1>
-      Dashboard: {user?.email} | {user?.name}
-    </h1>
+    <Container>
+      Resumo
+    </Container>
   );
 }
 

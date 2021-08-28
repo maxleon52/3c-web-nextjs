@@ -35,25 +35,23 @@ export const AuthContext = createContext({} as AuthContextData);
 export function AuthProvider({ children }: AuthProviderProps) {
   const [user, setUser] = useState<User | null>(null);
 
+  const { "3cAuth.token": token } = parseCookies();
   const isAuthenticated = !!user;
 
   useEffect(() => {
-    const { "3cAuth.token": token } = parseCookies();
-
     if (token) {
       api
         .get("/user")
         .then((response) => {
           setUser(response.data);
-          console.log(response);
+          Router.push("/dashboard");
         })
         .catch(() => {
           destroyCookie(undefined, "3cAuth.token");
-
           Router.push("/");
         });
     }
-  }, []);
+  }, [token]);
 
   async function signIn({ email, password }: SignInCredentials) {
     try {
