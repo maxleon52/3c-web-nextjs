@@ -3,13 +3,13 @@
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 
-import { Container } from "../styles/pages/dashboard";
+import { Container } from "../styles/pages/resumo";
 
-function Dashboard() {
+function Resumo() {
 
   return (
     <Container>
-      Dashboard
+      Resumo
     </Container>
   );
 }
@@ -28,4 +28,4 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
   return { props: {} };
 };
 
-export default Dashboard;
+export default Resumo;
