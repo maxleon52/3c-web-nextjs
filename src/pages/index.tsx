@@ -1,10 +1,14 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useContext } from "react";
 import Link from "next/link";
 import { SubmitHandler, useForm } from "react-hook-form";
 import * as yup from "yup";
 import { yupResolver } from "@hookform/resolvers/yup";
+
 import { GrGithub, GrLinkedinOption } from "react-icons/gr";
 import { RiUser3Line, RiLockLine } from "react-icons/ri";
+
+import { AuthContext } from "../context/AuthContext";
+
 
 import Modal from "../components/Modal";
 import { Input } from "../components/Input";
@@ -23,8 +27,6 @@ import {
   Separator,
   ContentModal,
 } from "../styles/pages/home";
-import { AuthContext } from "../context/AuthContext";
-import { useContext } from "react";
 
 type SignInFormData = {
   email: string;
@@ -73,7 +75,7 @@ export default function Home() {
     e.preventDefault();
 
     // Simula delay
-    await new Promise((resolver) => setTimeout(resolver, 750));
+    // await new Promise((resolver) => setTimeout(resolver, 750));
 
     await signIn({ email, password });
   };

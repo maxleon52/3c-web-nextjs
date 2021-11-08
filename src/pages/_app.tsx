@@ -1,12 +1,14 @@
+import { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import { parseCookies } from "nookies";
 import { AuthProvider } from "../context/AuthContext";
 
 import Sidebar from "../components/Sidebar";
+import Header from "../components/Header";
 
 import { GlobalStyles } from "../styles/global";
 
-import "../styles/pages/app.css";
+import * as S from "../styles/pages/app";
 
 function MyApp({ Component, pageProps }: AppProps) {
   const { ["3cAuth.token"]: token } = parseCookies();
@@ -14,12 +16,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <AuthProvider>
       <GlobalStyles />
-      <div className="container">
+      <S.Container isToken={!!token}>
         {!!token === true && <Sidebar />}
-        <main className="container__main">
-          <Component {...pageProps} />
-        </main>
-      </div>
+
+        <section>
+          {!!token === true && <Header />}
+          <main>
+            <Component {...pageProps} />
+          </main>
+        </section>
+      </S.Container>
     </AuthProvider>
   );
 }

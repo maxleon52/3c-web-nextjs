@@ -3,14 +3,15 @@
 import { GetServerSideProps } from "next";
 import { parseCookies } from "nookies";
 
-import { Container } from "../styles/pages/resumo";
+import Select from "../components/Select";
+
+import * as S from "../styles/pages/resumo";
 
 function Resumo() {
-
   return (
-    <Container>
-      Resumo
-    </Container>
+    <S.Container>
+      <Select title="Cartão" data={["Cartão 1", "Cartão 2"]} />
+    </S.Container>
   );
 }
 

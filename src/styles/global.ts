@@ -33,6 +33,7 @@ export const GlobalStyles = createGlobalStyle`
 
   html {
     font-size: 1rem;
+    color: var(--blue-900);
     // Tablets
     @media (min-width: 1080px) {
       font-size: 100%; // 16px

@@ -24,8 +24,8 @@ function Sidebar() {
       </header>
 
       <S.Navigation isToggle={isToggle}>
-        {iconsMenu.map(({ icon: Icon, name, pathname }) => (
-          <Link href={pathname}>
+        {iconsMenu.map(({ icon: Icon, name, pathname }, index) => (
+          <Link href={pathname} key={index}>
             <a>
               <Icon size={36} />
               <p>{name}</p>

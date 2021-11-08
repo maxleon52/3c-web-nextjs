@@ -53,7 +53,6 @@ export const Header = styled.header`
   @media (max-width: 768px) {
     padding: 0rem 1rem;
     > div {
-      /* border: 2px solid red; */
       width: 100%;
       h1 {
         max-width: 35px;
