@@ -1,4 +1,3 @@
-import { useEffect, useState } from "react";
 import { AppProps } from "next/app";
 import { parseCookies } from "nookies";
 import { AuthProvider } from "../context/AuthContext";

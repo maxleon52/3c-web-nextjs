@@ -18,4 +18,5 @@ export const Container = styled.select`
   background-image: url("./assets/images/arrow-down.svg");
   background-position: 98% 50%;
   background-repeat: no-repeat;
+  cursor: pointer;
 `;
